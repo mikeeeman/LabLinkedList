@@ -1,3 +1,33 @@
+/****************************************************************************
+ * Copyright (C) 2016 by Andreas Habegger                                   *
+ *                                                                          *
+ * This file is part of Linked List Example  - BTF2231                      *
+ *                                                                          *
+ *   TMA is free software: you can redistribute it and/or modify it         *
+ *   under the terms of the GNU Lesser General Public License as published  *
+ *   by the Free Software Foundation, either version 3 of the License, or   *
+ *   (at your option) any later version.                                    *
+ *                                                                          *
+ *   LLE is distributed in the hope that it will be useful, to students     *
+ *   following the course BTF2231 at Bern University but WITHOUT ANY        *
+ *   WARRANTY. See the GNU Lesser General Public License for more details.  *
+ *                                                                          *
+ *   You should have received a copy of the GNU Lesser General Public       *
+ *   License along with TMA.  If not, see <http://www.gnu.org/licenses/>.   *
+ ****************************************************************************/
+
+/**
+ * @file userctrl.c
+ * @author Andreas HABEGGER
+ * @date 26 Jan 2016
+ * @brief In this file are all function descriptions (public and privat)
+ * The public declared functions in coresponding header file are defined here. Additionally
+ * are private (static) functions declared and described here.
+ *
+ * @see http://linux.bfh.ch/
+ * @bug currently no bugs
+ * @todo add entire LLE functionality - see TODO below for more detail
+ */
 #include <stdio.h>
 #include "helper.h"
 #include "userctrl.h"
