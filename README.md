@@ -12,10 +12,21 @@ The application is an exercise of course BTF2231 (C programming course). The fil
  :  Andreas HABEGGER <andreas.habegger@bfh.ch>
 
 **Date**
- :  128.02.2016
+ :  28.02.2016
 
 ___
+Exercise Description
+---
+Create a test application that uses linked list (unidirectional linked and not circular). Use the snipped which consists a simple program ctrl menu. Fill in missing code in **linkedlistctrl.c**. The following functionality must be implemented:
+  - Add new node to the list
+  - New added nodes are filled in alphabetically in order
+  - Display list in order
+  - Display list in reverse order
+  - Free list
+  - Remove a specific node
 
+To improve your C skills it is a good idea to analyze the given snipped first. In main program ctrl (switch-case) are some input data validation and buffer flushing methods used. A good idea is to notify user if he/she wands delete a node or display a list if list is empty.
+___
 Structure of Directory
 ---
 ### doc/
