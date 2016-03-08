@@ -6,8 +6,10 @@ CONFIG -= qt
 SOURCES += \
     linkedListApp.c \ 
     helper.c \
-    userctrl.c
+    userctrl.c \
+    linkedlistctrl.c
 
 HEADERS += \
     helper.h \
-    userctrl.h
+    userctrl.h \
+    linkedlistctrl.h

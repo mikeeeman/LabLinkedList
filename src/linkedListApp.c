@@ -32,6 +32,7 @@
 #include <string.h>
 #include "helper.h"
 #include "userctrl.h"
+#include "linkedlistctrl.h"
 
 
 const OptionEntry menuEntries[] = {
