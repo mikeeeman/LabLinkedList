@@ -41,8 +41,8 @@ typedef struct {
 
 
 typedef struct {
-  OptionEntry *entries;
-  char *header;
+  const OptionEntry *entries;
+  const char *header;
   unsigned int numOfEntries;
 } OptionMenu;
 

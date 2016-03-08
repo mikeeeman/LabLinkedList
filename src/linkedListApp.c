@@ -29,29 +29,29 @@
  * @todo add entire LLE functionality - see TODO below for more detail
  */
 #include <stdio.h>
+#include <string.h>
 #include "helper.h"
 #include "userctrl.h"
 
 
-static OptionEntry menuEntries[] = {
-                 { 0 , "Display \"Control Menu\""},
-                 { 1 , "Add list node at head"},
-                 { 2 , "Add list node at tail"},
-                 { 3 , "Add list node at position"},
-                 { 4 , "Display linked list"},
-                 { 5 , "Delete first list node"},
-                 { 6 , "Delete last list node"},
-                 { 7 , "Delete list node at position"},
-                 { 8 , "Sort nodes alphabetically in order"},
-                 { 9 , "Sort nodes alphabetically in reverse order"},
-                 { 10 ,"Free list"},
-                 { 11 ,"Exit program"}
-                };
+const OptionEntry menuEntries[] = {
+  { 0 , "Display \"Control Menu\""},
+  { 1 , "Add list node (alpha sort)"},
+  { 2 , "Delete list node"},
+  { 3 , "Display list (in order)"},
+  { 4 , "Display list (reverse)"},
+  { 5 , "Display list assembly"},
+  { 6 , "Free list"},
+  { 10, "Exit program"}
+};
 
 
 int main(void)
 {
   OptionMenu userMenu;
+
+  LISTPTR list = NULL;
+  char data[LENGHT];
 
   userMenu.entries = menuEntries;
   userMenu.header = "Linked List -- Example";
@@ -63,50 +63,60 @@ int main(void)
   displayMenu(&userMenu);
 
   while(isEnable){
-      switch(getSel(&userMenu)){
-        case 1:
-          // TODO : Add node at head
-          break;
-        case 2:
-          // TODO : Add node at tail
-          break;
-        case 3:
-          // TODO : Add node at position
-          break;
-        case 4:
-          // TODO : Display Linked List
-          break;
-        case 5:
-          // TODO : Delete first list node
-          break;
-        case 6:
-          // TODO : Delete last list node
-          break;
-        case 7:
-          // TODO : Delete list node at position
-          break;
-        case 8:
-          // TODO : Sort alpha in order
-          break;
-        case 9:
-          // TODO : Sort alpha in reverse order
-          break;
-        case 10:
-          // TODO : Free List
-          break;
-        case 11:
-          // TODO : Free List and exit program
-          isEnable = false;
-          break;
-        default:
-          displayMenu(&userMenu);
-          menuPrinted = true;
-          break;
+    switch(getSel(&userMenu)){
+      case 1:
+        printf("Type a name and confirm by [ENTER] <max %u>: ", (LENGHT-1) );
+        fgets(data, LENGHT, stdin);
+        if(strlen(data) == LENGHT-1) flushStdin();
+        strtok(data, "\n");
+        list = addNode(data, list);
+        break;
+      case 2:
+        if(list == NULL)
+          puts("List is empty !!");
+        else
+        {
+          printf("Type a name to remove from list confirm by [ENTER] <max %u>: ", (LENGHT-1) );
+          fgets(data, LENGHT, stdin);
+          strtok(data, "\n");
+          if(deleteNode(data, list) == NULL)
+            printf("\nNo node with data \"%s\" found in list\n", data);
         }
-      if(isEnable && !menuPrinted)
-        displayChoise(&userMenu, 0);
-      else
-        menuPrinted = !menuPrinted;
+        break;
+      case 3:
+        if(list == NULL)
+          puts("List is empty !!");
+        else
+          printList(list);
+        break;
+      case 4:
+        if(list == NULL)
+          puts("List is empty !!");
+        else
+          printListReverse(list);
+        break;
+      case 5:
+        if(list == NULL)
+          puts("List is empty !!");
+        else
+          printListAssembly(list);
+        break;
+      case 6:
+        list = freeList(list);
+        break;
+      case 10:
+        list = freeList(list);
+        isEnable = false;
+        break;
+      default:
+        displayMenu(&userMenu);
+        menuPrinted = true;
+        break;
     }
+    if(isEnable && !menuPrinted)
+      displayChoise(&userMenu, 0);
+    else
+      menuPrinted = !menuPrinted;
+  }
   return 0;
 }
